@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villager Uprising — Netinima</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../show.css" />
+</head>
+<body class="page-enter">
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
+    <iframe id="lb-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+    <li><a href="#">My List</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" type="text" placeholder="Search…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="show-hero">
+  <div class="show-hero-bg">
+    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      alt="Villager Uprising" />
+    <div class="fallback-bg t-village" style="display:none;width:100%;height:100%;position:relative">
+      <span style="position:absolute;left:30%;bottom:20px;font-size:6rem;opacity:.28">🧑‍🌾</span>
+      <span style="position:absolute;right:22%;bottom:20px;font-size:5rem;opacity:.18">⚔️</span>
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 65% 55%,#8B69141a 0%,transparent 58%)"></div>
+    </div>
+  </div>
+  <div class="show-hero-overlay"></div>
+  <div class="show-hero-content">
+    <a class="show-back" href="../index.html">← Back to Netinima</a>
+    <div class="genre-row"><span class="genre-tag">Comedy</span><span class="genre-tag">Adventure</span><span class="genre-tag">War / PvP</span></div>
+    <h1 class="show-title">Villager Uprising</h1>
+    <div class="show-meta">
+      <span class="stars">★★★★</span>
+      <span class="dot"></span><span>8.5/10</span>
+      <span class="dot"></span><span>2023</span>
+      <span class="dot"></span><span>2 Seasons</span>
+      <span class="dot"></span><span>16 Episodes</span>
+      <span class="dot"></span><span>1.6M views</span>
+    </div>
+    <p class="show-desc-short">Tired of being traded to death and used as XP farms, the villagers of Emerald Valley finally fight back. Armed with iron axes and extremely mediocre negotiation skills, they launch the most ambitious uprising the Overworld has ever seen.</p>
+    <div class="show-btns">
+      <button class="btn btn-primary" onclick="playEp(0)">▶&nbsp; Play Episode 1</button>
+      <button class="btn btn-secondary" onclick="openLB('dQw4w9WgXcQ')">🎬&nbsp; Watch Trailer</button>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="show-body">
+
+  <!-- PLAYER -->
+  <div class="player-section">
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">Hmmm, No More</span></div>
+    <div class="player-wrap" id="player-wrap">
+      <div class="player-placeholder" onclick="playEp(0)">
+        <div class="big-play">▶</div>
+        <p>Click to play &nbsp;"Hmmm, No More"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="show-layout">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- TRAILER -->
+      <div class="trailer-section">
+        <h3>Official Trailer</h3>
+        <div class="trailer-wrap" id="trailer-wrap">
+          <div class="trailer-thumb" onclick="openLB('dQw4w9WgXcQ')">
+            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Trailer thumbnail" />
+            <div class="trailer-play">▶</div>
+            <div class="trailer-badge">▶ TRAILER</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS -->
+      <div class="gallery-section">
+        <h3>Screenshots</h3>
+        <div class="gallery">
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="The villagers organize" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-village" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">🧑‍🌾</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">✊</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#8B691420 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">The villagers organize</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="Iron Golem changes sides" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-village" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">🤖</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🧑</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#8B691420 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">Iron Golem changes sides</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="The great villager march" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-desert" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">🧑</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🏕️</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#e11d4820 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">The great villager march</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="Siege of the player base" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-village" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">⚔️</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🏰</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#8B691420 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">Siege of the player base</div>
+      </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="about-section">
+        <h3>About This Series</h3>
+        <div class="about-text"><p>Tired of being traded to death and used as XP farms, the villagers of Emerald Valley finally fight back. Armed with iron axes and extremely mediocre negotiation skills, they launch the most ambitious uprising the Overworld has ever seen.</p><p>A comedy-action series beloved for its surprisingly touching character arcs hidden beneath the slapstick chaos. All 16 episodes now streaming.</p></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+
+      <!-- EPISODES -->
+      <div class="ep-section">
+        <h3>Episodes</h3>
+        <div class="ep-list" id="ep-list">
+
+        <div class="ep-item ep-active" id="epi-0" onclick="playEp(0)">
+          <span class="ep-num">01</span>
+          <div class="ep-info">
+            <div class="ep-name">Hmmm, No More</div>
+            <div class="ep-dur">14:22</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-1" onclick="playEp(1)">
+          <span class="ep-num">02</span>
+          <div class="ep-info">
+            <div class="ep-name">The Iron Axe Incident</div>
+            <div class="ep-dur">16:08</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-2" onclick="playEp(2)">
+          <span class="ep-num">03</span>
+          <div class="ep-info">
+            <div class="ep-name">Emerald Economy Collapse</div>
+            <div class="ep-dur">13:55</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-3" onclick="playEp(3)">
+          <span class="ep-num">04</span>
+          <div class="ep-info">
+            <div class="ep-name">The Golem Mutiny</div>
+            <div class="ep-dur">15:30</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="sidebar-lbl">Series Info</div>
+      <table class="info-table">
+<tr><td>Creator</td><td>HmmmPictures</td></tr>
+<tr><td>Year</td><td>2023</td></tr>
+<tr><td>Seasons</td><td>2 Seasons</td></tr>
+<tr><td>Episodes</td><td>16 Episodes</td></tr>
+<tr><td>Runtime</td><td>15 min avg</td></tr>
+<tr><td>Rating</td><td><span style="color:var(--gold)">★★★★</span> 8.5/10</td></tr>
+<tr><td>Views</td><td><span style="color:var(--green)">1.6M views</span></td></tr>
+      </table>
+
+      <!-- RELATED -->
+      <div class="sidebar-lbl">More Like This</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+
+      <a class="related-item" href="nether.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="The Nether Wars" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">The Nether Wars</div>
+          <div class="related-meta">2 Seasons · ★★★★½</div>
+        </div>
+      </a>
+
+      <a class="related-item" href="ocean.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="Deep Ocean Saga" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">Deep Ocean Saga</div>
+          <div class="related-meta">Film · ★★★★</div>
+        </div>
+      </a>
+
+      <a class="related-item" href="creeper.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="The Last Creeper Standing" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">The Last Creeper Standing</div>
+          <div class="related-meta">3 Seasons · ★★★★★</div>
+        </div>
+      </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="../index.html">Home</a>
+    <a href="#">All Series</a>
+    <a href="#">Top Rated</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="#">Submit Your Machinima</a>
+    <a href="#">Discord Server</a>
+    <a href="#">Awards</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+
+<script>
+const EPISODES = [
+  {n:1, title:'Hmmm, No More', dur:'14:22', yt:'dQw4w9WgXcQ'},
+  {n:2, title:'The Iron Axe Incident', dur:'16:08', yt:'dQw4w9WgXcQ'},
+  {n:3, title:'Emerald Economy Collapse', dur:'13:55', yt:'dQw4w9WgXcQ'},
+  {n:4, title:'The Golem Mutiny', dur:'15:30', yt:'dQw4w9WgXcQ'}
+];
+
+function playEp(idx) {
+  const ep = EPISODES[idx]; if (!ep) return;
+  document.getElementById('player-wrap').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${ep.yt}?autoplay=1&rel=0"
+      allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  document.getElementById('ep-name-lbl').textContent = ep.title;
+  document.querySelectorAll('.ep-item').forEach((el, i) => el.classList.toggle('ep-active', i === idx));
+  document.getElementById('player-wrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function openLB(ytId) {
+  document.getElementById('lb-iframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+  document.getElementById('lightbox').classList.add('lb-open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.getElementById('lb-iframe').src = '';
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>

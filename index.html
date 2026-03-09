@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netinima – Minecraft Machinimas</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── HOME-ONLY STYLES ── */
+    .hero {
+      position: relative; height: 92vh; min-height: 540px;
+      display: flex; align-items: flex-end; padding: 0 6vw 80px; overflow: hidden;
+    }
+    .hero-scene { position: absolute; inset: 0; background: #0d1520; }
+    .hero-scene::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 48%;
+      background: linear-gradient(to bottom, #3a6930 0, #3a6930 24px, #5a3a1a 24px, #5a3a1a 120px, #2a2a2a 120px);
+      clip-path: polygon(0% 18%,4% 13%,8% 17%,12% 9%,16% 14%,21% 7%,25% 12%,30% 5%,34% 10%,38% 4%,43% 9%,47% 3%,51% 8%,55% 1%,59% 7%,63% 2%,67% 8%,71% 4%,75% 10%,80% 5%,84% 12%,88% 7%,92% 13%,96% 8%,100% 16%,100% 100%,0% 100%);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,.88) 38%, transparent 72%), linear-gradient(to top, rgba(0,0,0,.92) 0%, transparent 38%);
+      z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 560px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--fm); font-size: .65rem; color: var(--green);
+      border: 1px solid var(--green-dim); padding: 4px 11px;
+      border-radius: 2px; margin-bottom: 16px; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .hero-badge::before { content: '▶'; font-size: .5rem; }
+    .hero-title {
+      font-family: var(--fh); font-size: clamp(3.2rem, 6.5vw, 5.5rem);
+      line-height: .93; letter-spacing: 2px; color: #fff;
+      text-shadow: 4px 4px 0 rgba(0,0,0,.6); margin-bottom: 14px;
+    }
+    .hero-title span { color: var(--green); }
+    .hero-meta {
+      display: flex; align-items: center; gap: 12px; font-size: .82rem;
+      color: var(--muted); margin-bottom: 12px; font-weight: 600;
+      letter-spacing: 1px; flex-wrap: wrap;
+    }
+    .hero-meta .rating { color: var(--gold); }
+    .hero-meta .dot { width: 3px; height: 3px; background: var(--muted); border-radius: 50%; }
+    .hero-meta .tag { border: 1px solid var(--border); padding: 2px 7px; border-radius: 2px; font-size: .65rem; text-transform: uppercase; }
+    .hero-desc { font-size: .92rem; color: #bbb; line-height: 1.65; margin-bottom: 26px; max-width: 400px; font-weight: 500; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* CATEGORIES */
+    .categories { display: flex; gap: 9px; flex-wrap: wrap; padding: 0 4vw; margin-bottom: 36px; }
+    .cat-pill {
+      padding: 7px 16px; background: var(--card); border: 1px solid var(--border);
+      border-radius: 3px; color: var(--muted); font-size: .74rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all .2s; font-family: var(--fb);
+    }
+    .cat-pill:hover, .cat-pill.active { background: var(--green); color: #000; border-color: var(--green); }
+
+    /* SECTIONS */
+    .section { padding: 0 4vw 44px; }
+    .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+    .section-title { font-family: var(--fh); font-size: 1.3rem; letter-spacing: 2px; }
+    .section-tag { font-family: var(--fm); font-size: .62rem; color: var(--green); border: 1px solid var(--green-dim); padding: 2px 7px; letter-spacing: 2px; text-transform: uppercase; }
+    .see-all { margin-left: auto; font-size: .72rem; color: var(--muted); text-decoration: none; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: color .2s; }
+    .see-all:hover { color: var(--green); }
+
+    /* CARD ROW */
+    .card-row { display: flex; gap: 13px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; }
+    .card-row::-webkit-scrollbar { height: 3px; }
+    .card-row::-webkit-scrollbar-thumb { background: var(--green-dim); }
+
+    /* CARDS */
+    .card {
+      flex: 0 0 195px; border-radius: 4px; overflow: hidden;
+      scroll-snap-align: start; cursor: pointer; text-decoration: none;
+      border: 1px solid transparent; transition: transform .25s, border-color .25s, box-shadow .25s;
+      position: relative; display: block; background: var(--card);
+    }
+    .card:hover { transform: scale(1.06) translateY(-4px); border-color: var(--green-dim); box-shadow: 0 12px 40px rgba(0,0,0,.6), 0 0 20px rgba(74,222,128,.13); z-index: 2; }
+    .card-thumb { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden; }
+    .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+    .card:hover .card-thumb img { transform: scale(1.06); }
+    .thumb-fallback { width: 100%; height: 100%; position: relative; }
+    .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.45); opacity: 0; transition: opacity .2s; }
+    .card:hover .play-overlay { opacity: 1; }
+    .play-circle { width: 38px; height: 38px; border-radius: 50%; background: rgba(74,222,128,.92); display: flex; align-items: center; justify-content: center; font-size: .9rem; color: #000; }
+    .card-info { padding: 9px 11px 11px; }
+    .card-title { font-size: .85rem; font-weight: 700; color: var(--text); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-sub { display: flex; gap: 7px; align-items: center; font-size: .7rem; color: var(--muted); font-weight: 500; }
+    .card-sub .cviews { color: var(--green-dim); }
+    .card-rating { color: var(--gold); font-size: .7rem; }
+    .card-badge { position: absolute; top: 7px; left: 7px; font-size: .58rem; font-weight: 700; padding: 2px 6px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; font-family: var(--fm); }
+    .badge-new { background: var(--red); color: #fff; }
+    .badge-hot { background: var(--gold); color: #000; }
+
+    /* FEATURED */
+    .featured-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 44px; padding: 0 4vw; }
+    .featured-card {
+      border-radius: 5px; overflow: hidden; position: relative;
+      cursor: pointer; text-decoration: none; display: block;
+      border: 1px solid var(--border); transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .featured-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.7), 0 0 24px rgba(74,222,128,.1); border-color: var(--green-dim); }
+    .featured-card .card-thumb { aspect-ratio: 16/7; }
+    .featured-card .fcard-info { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,.96), transparent); padding: 28px 14px 12px; }
+    .featured-card .fcard-title { font-size: .95rem; font-weight: 700; margin-bottom: 5px; color: var(--text); }
+    .featured-card .fcard-desc { font-size: .76rem; color: #999; margin-bottom: 8px; line-height: 1.5; font-weight: 500; }
+    .genre-chip { font-family: var(--fm); font-size: .58rem; color: var(--green); border: 1px solid var(--green-dim); padding: 2px 5px; }
+  </style>
+</head>
+<body class="page-enter">
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+    <li><a href="#">My List</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" type="text" placeholder="Search…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-scene"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Now Streaming</div>
+    <h1 class="hero-title">THE LAST<br><span>CREEPER</span><br>STANDING</h1>
+    <div class="hero-meta">
+      <span class="rating">★★★★★</span><span class="dot"></span>
+      <span>2024</span><span class="dot"></span>
+      <span>S3 · 12 Episodes</span><span class="dot"></span>
+      <span class="tag">Survival</span><span class="tag">Drama</span>
+    </div>
+    <p class="hero-desc">In a world where creepers have gained sentience, one outcast fights to prove his kind deserves a place among the Overworld's greatest heroes.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="shows/creeper.html">▶&nbsp; Play Now</a>
+      <a class="btn btn-secondary" href="shows/creeper.html">ℹ More Info</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker">
+  <span class="ticker-item"><span>NEW</span>REDSTONE CHRONICLES EP 8 DROPPED</span>
+  <span class="ticker-item"><span>★</span>HEROBRINE: ORIGINS — COMPLETE SERIES NOW STREAMING</span>
+  <span class="ticker-item"><span>HOT</span>STEVE VS ALEX FINALE — 2M VIEWS</span>
+  <span class="ticker-item"><span>NEW</span>ENDERMAN DIARIES S2 ANNOUNCED</span>
+  <span class="ticker-item"><span>★</span>NETHER WARS WINS BEST MACHINIMA 2024</span>
+  <span class="ticker-item"><span>NEW</span>REDSTONE CHRONICLES EP 8 DROPPED</span>
+  <span class="ticker-item"><span>★</span>HEROBRINE: ORIGINS — COMPLETE SERIES NOW STREAMING</span>
+  <span class="ticker-item"><span>HOT</span>STEVE VS ALEX FINALE — 2M VIEWS</span>
+  <span class="ticker-item"><span>NEW</span>ENDERMAN DIARIES S2 ANNOUNCED</span>
+  <span class="ticker-item"><span>★</span>NETHER WARS WINS BEST MACHINIMA 2024</span>
+</div></div>
+
+<!-- CATEGORIES -->
+<div class="categories">
+  <button class="cat-pill active" onclick="setcat(this)">All</button>
+  <button class="cat-pill" onclick="setcat(this)">Adventure</button>
+  <button class="cat-pill" onclick="setcat(this)">Horror</button>
+  <button class="cat-pill" onclick="setcat(this)">Comedy</button>
+  <button class="cat-pill" onclick="setcat(this)">War / PvP</button>
+  <button class="cat-pill" onclick="setcat(this)">Lore &amp; Myth</button>
+  <button class="cat-pill" onclick="setcat(this)">Survival</button>
+  <button class="cat-pill" onclick="setcat(this)">Shorts</button>
+</div>
+
+<!-- TRENDING -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Trending Now</h2>
+    <span class="section-tag">Live Rankings</span>
+    <a class="see-all">See All →</a>
+  </div>
+  <div class="card-row" id="row-trending"></div>
+</section>
+
+<!-- EDITOR'S PICKS -->
+<section style="margin-bottom:0">
+  <div class="section-header" style="padding:0 4vw 16px">
+    <h2 class="section-title">Editor's Picks</h2>
+    <a class="see-all">See All →</a>
+  </div>
+</section>
+<div class="featured-row" id="row-featured"></div>
+
+<!-- CONTINUE WATCHING -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Continue Watching</h2>
+    <span class="section-tag">Your Queue</span>
+  </div>
+  <div class="card-row" id="row-continue"></div>
+</section>
+
+<!-- NEW RELEASES -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">New Releases</h2>
+    <span class="section-tag">This Week</span>
+  </div>
+  <div class="card-row" id="row-new"></div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="#">All Series</a><a href="#">Films &amp; Shorts</a><a href="#">Top Rated</a><a href="#">Recently Added</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="#">Submit Your Machinima</a><a href="#">Creator Hub</a><a href="#">Discord Server</a><a href="#">Awards</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+
+<script>
+// All shows data — used to build cards on the homepage
+const SHOWS = [
+  {
+    id: 'creeper',
+    title: 'The Last Creeper Standing',
+    seasons: '3 Seasons',
+    views: '3.2M views',
+    stars: '★★★★★',
+    badge: 'HOT',
+    genres: ['Survival','Drama'],
+    // Replace with your actual YouTube video ID for the thumbnail
+    thumbYt: 'dQw4w9WgXcQ',
+    url: 'shows/creeper.html',
+    featured: true,
+    featuredDesc: 'An epic three-season survival saga filmed entirely in vanilla Minecraft with zero mods.',
+  },
+  {
+    id: 'herobrine',
+    title: 'Herobrine: Origins',
+    seasons: '1 Season',
+    views: '5.1M views',
+    stars: '★★★★★',
+    badge: 'HOT',
+    genres: ['Lore & Myth','Horror'],
+    thumbYt: 'dQw4w9WgXcQ',
+    url: 'shows/herobrine.html',
+    featured: true,
+    featuredDesc: 'The definitive origin story of Minecraft\'s most iconic urban legend, with an original orchestral score.',
+  },
+  {
+    id: 'nether',
+    title: 'The Nether Wars',
+    seasons: '2 Seasons',
+    views: '2.4M views',
+    stars: '★★★★½',
+    badge: '',
+    genres: ['War / PvP','Action'],
+    thumbYt: 'dQw4w9WgXcQ',
+    url: 'shows/nether.html',
+    featured: true,
+    featuredDesc: 'Fast-paced PvP storytelling across the burning hellscape of the Nether dimension.',
+  },
+  {
+    id: 'enderman',
+    title: 'Enderman Diaries',
+    seasons: '1 Season',
+    views: '980K views',
+    stars: '★★★★★',
+    badge: 'NEW',
+    genres: ['Drama','Lore & Myth'],
+    thumbYt: 'dQw4w9WgXcQ',
+    url: 'shows/enderman.html',
+    featured: false,
+    featuredDesc: '',
+  },
+  {
+    id: 'ocean',
+    title: 'Deep Ocean Saga',
+    seasons: 'Film',
+    views: '740K views',
+    stars: '★★★★',
+    badge: '',
+    genres: ['Adventure','Horror'],
+    thumbYt: 'dQw4w9WgXcQ',
+    url: 'shows/ocean.html',
+    featured: false,
+    featuredDesc: '',
+  },
+  {
+    id: 'villager',
+    title: 'Villager Uprising',
+    seasons: '2 Seasons',
+    views: '1.6M views',
+    stars: '★★★★',
+    badge: '',
+    genres: ['Comedy','Adventure'],
+    thumbYt: 'dQw4w9WgXcQ',
+    url: 'shows/villager.html',
+    featured: false,
+    featuredDesc: '',
+  },
+];
+
+const ACCS = { creeper:'#4ade80', herobrine:'#F5C518', nether:'#ff6b35', enderman:'#c77dff', ocean:'#00b4d8', villager:'#8B6914' };
+const THEMES = { creeper:'t-night', herobrine:'t-cave', nether:'t-nether', enderman:'t-end', ocean:'t-ocean', villager:'t-village' };
+const EMOJIS = { creeper:['💚','💥'], herobrine:['👤','⚔️'], nether:['🔥','💀'], enderman:['🦑','💜'], ocean:['🐟','🌊'], villager:['🧑‍🌾','⚔️'] };
+
+function thumbHTML(s) {
+  const acc = ACCS[s.id]; const theme = THEMES[s.id]; const [e1,e2] = EMOJIS[s.id];
+  // Uses YouTube thumbnail — replace thumbYt with a real video ID to see actual thumbnails
+  return `<img src="https://img.youtube.com/vi/${s.thumbYt}/mqdefault.jpg"
+    onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+    alt="${s.title}" style="width:100%;height:100%;object-fit:cover;display:block" />
+  <div class="thumb-fallback ${theme}" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+    <span style="position:absolute;left:22%;bottom:6px;font-size:1.5rem">${e1}</span>
+    <span style="position:absolute;right:17%;bottom:6px;font-size:1.25rem">${e2}</span>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,${acc}20 0%,transparent 65%)"></div>
+  </div>`;
+}
+
+function buildCard(s) {
+  const a = document.createElement('a');
+  a.className = 'card'; a.href = s.url;
+  a.innerHTML = `<div class="card-thumb" style="position:relative">
+    ${thumbHTML(s)}
+    <div class="play-overlay"><div class="play-circle">▶</div></div>
+    ${s.badge ? `<div class="card-badge ${s.badge==='NEW'?'badge-new':'badge-hot'}">${s.badge}</div>` : ''}
+  </div>
+  <div class="card-info">
+    <div class="card-title">${s.title}</div>
+    <div class="card-sub"><span class="cviews">${s.seasons}</span><span>·</span><span>${s.views}</span></div>
+    <div class="card-rating">${s.stars}</div>
+  </div>`;
+  return a;
+}
+
+function buildFeatured(s) {
+  const a = document.createElement('a');
+  a.className = 'featured-card'; a.href = s.url;
+  a.innerHTML = `<div class="card-thumb" style="aspect-ratio:16/7;position:relative">
+    ${thumbHTML(s)}
+    <div class="play-overlay"><div class="play-circle">▶</div></div>
+  </div>
+  <div class="fcard-info">
+    <div class="fcard-title">${s.title}</div>
+    <div class="fcard-desc">${s.featuredDesc}</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span class="card-rating">${s.stars}</span>
+      ${s.genres.map(g=>`<span class="genre-chip">${g}</span>`).join('')}
+    </div>
+  </div>`;
+  return a;
+}
+
+const trending = document.getElementById('row-trending');
+const featured = document.getElementById('row-featured');
+const cont     = document.getElementById('row-continue');
+const newrel   = document.getElementById('row-new');
+
+SHOWS.forEach(s => { trending.appendChild(buildCard(s)); });
+SHOWS.filter(s => s.featured).forEach(s => { featured.appendChild(buildFeatured(s)); });
+[SHOWS[0], SHOWS[5], SHOWS[3]].forEach(s => { cont.appendChild(buildCard(s)); });
+[SHOWS[3], SHOWS[4], SHOWS[0], SHOWS[5]].forEach(s => { newrel.appendChild(buildCard(s)); });
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+function setcat(el) {
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

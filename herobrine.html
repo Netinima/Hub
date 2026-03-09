@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Herobrine: Origins — Netinima</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../show.css" />
+</head>
+<body class="page-enter">
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
+    <iframe id="lb-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+    <li><a href="#">My List</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" type="text" placeholder="Search…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="show-hero">
+  <div class="show-hero-bg">
+    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      alt="Herobrine: Origins" />
+    <div class="fallback-bg t-cave" style="display:none;width:100%;height:100%;position:relative">
+      <span style="position:absolute;left:30%;bottom:20px;font-size:6rem;opacity:.28">👤</span>
+      <span style="position:absolute;right:22%;bottom:20px;font-size:5rem;opacity:.18">⚔️</span>
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 65% 55%,#F5C5181a 0%,transparent 58%)"></div>
+    </div>
+  </div>
+  <div class="show-hero-overlay"></div>
+  <div class="show-hero-content">
+    <a class="show-back" href="../index.html">← Back to Netinima</a>
+    <div class="genre-row"><span class="genre-tag">Lore & Myth</span><span class="genre-tag">Horror</span><span class="genre-tag">Action</span></div>
+    <h1 class="show-title">Herobrine: Origins</h1>
+    <div class="show-meta">
+      <span class="stars">★★★★★</span>
+      <span class="dot"></span><span>9.7/10</span>
+      <span class="dot"></span><span>2023</span>
+      <span class="dot"></span><span>1 Season</span>
+      <span class="dot"></span><span>8 Episodes</span>
+      <span class="dot"></span><span>5.1M views</span>
+    </div>
+    <p class="show-desc-short">Before the legend. Before the warnings. There was a miner named Brian who delved too deep into the world's most forbidden cave system. This is his story.</p>
+    <div class="show-btns">
+      <button class="btn btn-primary" onclick="playEp(0)">▶&nbsp; Play Episode 1</button>
+      <button class="btn btn-secondary" onclick="openLB('dQw4w9WgXcQ')">🎬&nbsp; Watch Trailer</button>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="show-body">
+
+  <!-- PLAYER -->
+  <div class="player-section">
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">The Miner\'s Descent</span></div>
+    <div class="player-wrap" id="player-wrap">
+      <div class="player-placeholder" onclick="playEp(0)">
+        <div class="big-play">▶</div>
+        <p>Click to play &nbsp;"The Miner\'s Descent"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="show-layout">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- TRAILER -->
+      <div class="trailer-section">
+        <h3>Official Trailer</h3>
+        <div class="trailer-wrap" id="trailer-wrap">
+          <div class="trailer-thumb" onclick="openLB('dQw4w9WgXcQ')">
+            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Trailer thumbnail" />
+            <div class="trailer-play">▶</div>
+            <div class="trailer-badge">▶ TRAILER</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS -->
+      <div class="gallery-section">
+        <h3>Screenshots</h3>
+        <div class="gallery">
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="Brian descends alone" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-cave" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">👤</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🕯️</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#F5C51820 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">Brian descends alone</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="White eyes in the forest" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-night" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">👁️</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🌲</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#4ade8020 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">White eyes in the forest</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="The corruption spreads" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-end" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">💀</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🌀</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#c77dff20 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">The corruption spreads</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="Steve confronts the truth" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-cave" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">⚔️</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">💎</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#F5C51820 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">Steve confronts the truth</div>
+      </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="about-section">
+        <h3>About This Series</h3>
+        <div class="about-text"><p>Before the legend. Before the warnings. There was a miner named Brian who delved too deep into the world's most forbidden cave system. This is his story.</p><p>Herobrine: Origins is the definitive telling of Minecraft's most iconic urban legend, rendered in stunning machinima with an original orchestral score and handcrafted cutscene animations built over two years.</p></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+
+      <!-- EPISODES -->
+      <div class="ep-section">
+        <h3>Episodes</h3>
+        <div class="ep-list" id="ep-list">
+
+        <div class="ep-item ep-active" id="epi-0" onclick="playEp(0)">
+          <span class="ep-num">01</span>
+          <div class="ep-info">
+            <div class="ep-name">The Miner's Descent</div>
+            <div class="ep-dur">29:14</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-1" onclick="playEp(1)">
+          <span class="ep-num">02</span>
+          <div class="ep-info">
+            <div class="ep-name">White Eyes in the Dark</div>
+            <div class="ep-dur">32:07</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-2" onclick="playEp(2)">
+          <span class="ep-num">03</span>
+          <div class="ep-info">
+            <div class="ep-name">The Forgotten Village</div>
+            <div class="ep-dur">28:55</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-3" onclick="playEp(3)">
+          <span class="ep-num">04</span>
+          <div class="ep-info">
+            <div class="ep-name">Corruption Spreads</div>
+            <div class="ep-dur">34:20</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-4" onclick="playEp(4)">
+          <span class="ep-num">05</span>
+          <div class="ep-info">
+            <div class="ep-name">Steve Remembers</div>
+            <div class="ep-dur">30:11</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-5" onclick="playEp(5)">
+          <span class="ep-num">06</span>
+          <div class="ep-info">
+            <div class="ep-name">The Last Witness</div>
+            <div class="ep-dur">31:48</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-6" onclick="playEp(6)">
+          <span class="ep-num">07</span>
+          <div class="ep-info">
+            <div class="ep-name">Into the Void</div>
+            <div class="ep-dur">36:02</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+
+        <div class="ep-item" id="epi-7" onclick="playEp(7)">
+          <span class="ep-num">08</span>
+          <div class="ep-info">
+            <div class="ep-name">Origin</div>
+            <div class="ep-dur">42:19</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="sidebar-lbl">Series Info</div>
+      <table class="info-table">
+<tr><td>Creator</td><td>WhiteEyes Productions</td></tr>
+<tr><td>Year</td><td>2023</td></tr>
+<tr><td>Seasons</td><td>1 Season</td></tr>
+<tr><td>Episodes</td><td>8 Episodes</td></tr>
+<tr><td>Runtime</td><td>31 min avg</td></tr>
+<tr><td>Rating</td><td><span style="color:var(--gold)">★★★★★</span> 9.7/10</td></tr>
+<tr><td>Views</td><td><span style="color:var(--green)">5.1M views</span></td></tr>
+      </table>
+
+      <!-- RELATED -->
+      <div class="sidebar-lbl">More Like This</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+
+      <a class="related-item" href="creeper.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="The Last Creeper Standing" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">The Last Creeper Standing</div>
+          <div class="related-meta">3 Seasons · ★★★★★</div>
+        </div>
+      </a>
+
+      <a class="related-item" href="enderman.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="Enderman Diaries" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">Enderman Diaries</div>
+          <div class="related-meta">1 Season (Ongoing) · ★★★★★</div>
+        </div>
+      </a>
+
+      <a class="related-item" href="nether.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="The Nether Wars" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">The Nether Wars</div>
+          <div class="related-meta">2 Seasons · ★★★★½</div>
+        </div>
+      </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="../index.html">Home</a>
+    <a href="#">All Series</a>
+    <a href="#">Top Rated</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="#">Submit Your Machinima</a>
+    <a href="#">Discord Server</a>
+    <a href="#">Awards</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+
+<script>
+const EPISODES = [
+  {n:1, title:'The Miner\'s Descent', dur:'29:14', yt:'dQw4w9WgXcQ'},
+  {n:2, title:'White Eyes in the Dark', dur:'32:07', yt:'dQw4w9WgXcQ'},
+  {n:3, title:'The Forgotten Village', dur:'28:55', yt:'dQw4w9WgXcQ'},
+  {n:4, title:'Corruption Spreads', dur:'34:20', yt:'dQw4w9WgXcQ'},
+  {n:5, title:'Steve Remembers', dur:'30:11', yt:'dQw4w9WgXcQ'},
+  {n:6, title:'The Last Witness', dur:'31:48', yt:'dQw4w9WgXcQ'},
+  {n:7, title:'Into the Void', dur:'36:02', yt:'dQw4w9WgXcQ'},
+  {n:8, title:'Origin', dur:'42:19', yt:'dQw4w9WgXcQ'}
+];
+
+function playEp(idx) {
+  const ep = EPISODES[idx]; if (!ep) return;
+  document.getElementById('player-wrap').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${ep.yt}?autoplay=1&rel=0"
+      allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  document.getElementById('ep-name-lbl').textContent = ep.title;
+  document.querySelectorAll('.ep-item').forEach((el, i) => el.classList.toggle('ep-active', i === idx));
+  document.getElementById('player-wrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function openLB(ytId) {
+  document.getElementById('lb-iframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+  document.getElementById('lightbox').classList.add('lb-open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.getElementById('lb-iframe').src = '';
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>

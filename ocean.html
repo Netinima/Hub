@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deep Ocean Saga — Netinima</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../show.css" />
+</head>
+<body class="page-enter">
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()">✕ CLOSE</button>
+    <iframe id="lb-iframe" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+
+<nav id="nav">
+  <a class="nav-logo" href="../index.html">NET<span>INIMA</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="#">Series</a></li>
+    <li><a href="#">Films</a></li>
+    <li><a href="#">Shorts</a></li>
+    <li><a href="#">My List</a></li>
+  </ul>
+  <div class="nav-right">
+    <input class="nav-search" type="text" placeholder="Search…" />
+    <div class="nav-avatar">🎮</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="show-hero">
+  <div class="show-hero-bg">
+    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+      alt="Deep Ocean Saga" />
+    <div class="fallback-bg t-ocean" style="display:none;width:100%;height:100%;position:relative">
+      <span style="position:absolute;left:30%;bottom:20px;font-size:6rem;opacity:.28">🐟</span>
+      <span style="position:absolute;right:22%;bottom:20px;font-size:5rem;opacity:.18">🌊</span>
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 65% 55%,#00b4d81a 0%,transparent 58%)"></div>
+    </div>
+  </div>
+  <div class="show-hero-overlay"></div>
+  <div class="show-hero-content">
+    <a class="show-back" href="../index.html">← Back to Netinima</a>
+    <div class="genre-row"><span class="genre-tag">Adventure</span><span class="genre-tag">Drama</span><span class="genre-tag">Horror</span></div>
+    <h1 class="show-title">Deep Ocean Saga</h1>
+    <div class="show-meta">
+      <span class="stars">★★★★</span>
+      <span class="dot"></span><span>8.2/10</span>
+      <span class="dot"></span><span>2024</span>
+      <span class="dot"></span><span>Film</span>
+      <span class="dot"></span><span>1 Film</span>
+      <span class="dot"></span><span>740K views</span>
+    </div>
+    <p class="show-desc-short">A lone diver descends into the deepest ocean monument ever constructed in Minecraft — only to discover it is not abandoned. Deep Ocean Saga is a feature-length machinima film blending survival horror with a heartfelt story about loneliness and discovery.</p>
+    <div class="show-btns">
+      <button class="btn btn-primary" onclick="playEp(0)">▶&nbsp; Play Episode 1</button>
+      <button class="btn btn-secondary" onclick="openLB('dQw4w9WgXcQ')">🎬&nbsp; Watch Trailer</button>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="show-body">
+
+  <!-- PLAYER -->
+  <div class="player-section">
+    <div class="player-label">Now Playing — <span id="ep-name-lbl">Deep Ocean Saga (Full Film)</span></div>
+    <div class="player-wrap" id="player-wrap">
+      <div class="player-placeholder" onclick="playEp(0)">
+        <div class="big-play">▶</div>
+        <p>Click to play &nbsp;"Deep Ocean Saga (Full Film)"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="show-layout">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <!-- TRAILER -->
+      <div class="trailer-section">
+        <h3>Official Trailer</h3>
+        <div class="trailer-wrap" id="trailer-wrap">
+          <div class="trailer-thumb" onclick="openLB('dQw4w9WgXcQ')">
+            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+              onerror="this.style.display='none'"
+              alt="Trailer thumbnail" />
+            <div class="trailer-play">▶</div>
+            <div class="trailer-badge">▶ TRAILER</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREENSHOTS -->
+      <div class="gallery-section">
+        <h3>Screenshots</h3>
+        <div class="gallery">
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="The ocean monument looms" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-ocean" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">🐟</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🌊</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#00b4d820 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">The ocean monument looms</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="The diver finds treasure" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-ocean" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">🏊</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">💎</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#00b4d820 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">The diver finds treasure</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="Something stirs in the deep" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-ocean" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">🦑</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🔦</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#00b4d820 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">Something stirs in the deep</div>
+      </div>
+
+      <div class="gallery-img">
+        <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+          onerror="this.style.display='none';this.nextSibling.style.display='block'"
+          alt="An ancient underwater ruin" style="width:100%;height:100%;object-fit:cover;display:block" />
+        <div class="fallback-shot t-cave" style="display:none;width:100%;height:100%;position:absolute;inset:0">
+          <span style="position:absolute;left:22%;bottom:6px;font-size:1.4rem">💧</span>
+          <span style="position:absolute;right:17%;bottom:6px;font-size:1.1rem">🌀</span>
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 85%,#F5C51820 0%,transparent 65%)"></div>
+        </div>
+        <div class="gallery-img-lbl">An ancient underwater ruin</div>
+      </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="about-section">
+        <h3>About This Series</h3>
+        <div class="about-text"><p>A lone diver descends into the deepest ocean monument ever constructed in Minecraft — only to discover it is not abandoned. Deep Ocean Saga is a feature-length machinima film blending survival horror with a heartfelt story about loneliness and discovery.</p><p>Filmed across a custom-built 1:1 scale ocean biome over 6 months, every frame is meticulously composed like a real underwater documentary.</p></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div>
+
+      <!-- EPISODES -->
+      <div class="ep-section">
+        <h3>Episodes</h3>
+        <div class="ep-list" id="ep-list">
+
+        <div class="ep-item ep-active" id="epi-0" onclick="playEp(0)">
+          <span class="ep-num">01</span>
+          <div class="ep-info">
+            <div class="ep-name">Deep Ocean Saga (Full Film)</div>
+            <div class="ep-dur">48:07</div>
+          </div>
+          <div class="ep-play">▶</div>
+        </div>
+        </div>
+      </div>
+
+      <!-- INFO -->
+      <div class="sidebar-lbl">Series Info</div>
+      <table class="info-table">
+<tr><td>Creator</td><td>AquaBlock Cinema</td></tr>
+<tr><td>Year</td><td>2024</td></tr>
+<tr><td>Seasons</td><td>Film</td></tr>
+<tr><td>Episodes</td><td>1 Film</td></tr>
+<tr><td>Runtime</td><td>48 min</td></tr>
+<tr><td>Rating</td><td><span style="color:var(--gold)">★★★★</span> 8.2/10</td></tr>
+<tr><td>Views</td><td><span style="color:var(--green)">740K views</span></td></tr>
+      </table>
+
+      <!-- RELATED -->
+      <div class="sidebar-lbl">More Like This</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+
+      <a class="related-item" href="enderman.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="Enderman Diaries" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">Enderman Diaries</div>
+          <div class="related-meta">1 Season (Ongoing) · ★★★★★</div>
+        </div>
+      </a>
+
+      <a class="related-item" href="villager.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="Villager Uprising" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">Villager Uprising</div>
+          <div class="related-meta">2 Seasons · ★★★★</div>
+        </div>
+      </a>
+
+      <a class="related-item" href="creeper.html">
+        <div class="related-thumb">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/mqdefault.jpg"
+            onerror="this.style.display='none'"
+            alt="The Last Creeper Standing" />
+        </div>
+        <div class="related-info">
+          <div class="related-title">The Last Creeper Standing</div>
+          <div class="related-meta">3 Seasons · ★★★★★</div>
+        </div>
+      </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">NET<span>INIMA</span></div>
+    <p class="footer-tagline">The premier destination for Minecraft machinima. Stories built block by block, frame by frame.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Browse</h4>
+    <a href="../index.html">Home</a>
+    <a href="#">All Series</a>
+    <a href="#">Top Rated</a>
+  </div>
+  <div class="footer-col">
+    <h4>Community</h4>
+    <a href="#">Submit Your Machinima</a>
+    <a href="#">Discord Server</a>
+    <a href="#">Awards</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Netinima · Not affiliated with Mojang or Microsoft</p>
+    <p>Built in the Overworld ⛏</p>
+  </div>
+</footer>
+
+<script>
+const EPISODES = [
+  {n:1, title:'Deep Ocean Saga (Full Film)', dur:'48:07', yt:'dQw4w9WgXcQ'}
+];
+
+function playEp(idx) {
+  const ep = EPISODES[idx]; if (!ep) return;
+  document.getElementById('player-wrap').innerHTML =
+    `<iframe src="https://www.youtube.com/embed/${ep.yt}?autoplay=1&rel=0"
+      allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
+  document.getElementById('ep-name-lbl').textContent = ep.title;
+  document.querySelectorAll('.ep-item').forEach((el, i) => el.classList.toggle('ep-active', i === idx));
+  document.getElementById('player-wrap').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function openLB(ytId) {
+  document.getElementById('lb-iframe').src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+  document.getElementById('lightbox').classList.add('lb-open');
+}
+function closeLB(e) {
+  if (e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('lb-open');
+  document.getElementById('lb-iframe').src = '';
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+</script>
+</body>
+</html>
